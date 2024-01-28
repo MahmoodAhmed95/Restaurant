@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const categorySchema = new Schema(
+const restaurantSchema = new Schema(
   {
     name: String,
+    categoryUrl: String,
     url: String,
     profile_img: String,
     cloudinary_id: String,
@@ -12,4 +13,4 @@ const categorySchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model("Restaurant", restaurantSchema);

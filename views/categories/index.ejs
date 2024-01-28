@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') %>
+
+<section class="banner-home"></section>
+<section class="items">
+    <!-- Page Content -->
+    <div class="container">
+         <div class="heading" data-aos="fade-up" data-aos-delay="300">
+            <h2>Check Out Our <span><a href="#">Categories</a></span></h2>
+            <h3>One of the finest food you well found in Bahrain it's on the net now!!!</h3>
+        </div>
+      <div class="row text-center text-lg-left">
+                    
+<% categories.forEach(function (category) { %>
+        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-left" data-aos-delay="500">
+         <div class="imageBox">
+          <a href="/categories/<%= category.url %>" class="d-block mb-4 h-100" data-toggle="lightbox" data-gallery="example-gallery">
+            <img class="img-fluid img-thumbnail" src="<%= category.profile_img %>" alt="">
+              <div class="textBox">
+                  <h5><%= category.name %></h5>
+              </div>
+          </a>
+         </div>
+        </div>
+<% }) %>
+
+
+
+      </div>
+    </div>
+
+                
+
+
+    
+    <!-- /.container -->
+</section>
+
+<%- include('../partials/footer.ejs') %>
