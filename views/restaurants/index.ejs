@@ -1,51 +1,38 @@
 <%- include('../partials/header.ejs') %>
 
 <section class="banner-home"></section>
-<section class="items">
+<section id="blog">
+   <div class="gradient"></div>
+           <div class="container">
+              <h1>Welcome to our food blog</h1>
+           </div>
+            <hr/>
     <!-- Page Content -->
     <div class="container">
          <div class="heading" data-aos="fade-up" data-aos-delay="300">
-            <h2>Check Out Our <span><a href="#">Categories</a></span></h2>
-            <h3>One of the finest food you well found in Bahrain it's on the net now!!!</h3>
-        </div>
-      <div class="row text-center text-lg-left">
-
-
-
-
-                    <div>
-                        <a href="">
-                            <div class="box">
-                                <i class="bi bi-mortarboard-fill"></i>
-                                <h3 class="categoryA">
-                                    
-                                </h3>
-                            </div>
-                        </a>
-                    </div>
-                    
-<% restaurants.forEach(function (restaurent) { %>
-        <div class="col-lg-3 col-md-4 col-6" data-aos="fade-left" data-aos-delay="500">
-         <div class="imageBox">
-          <a href="/restaurent/<%= restaurent.url %>" class="d-block mb-4 h-100" data-toggle="lightbox" data-gallery="example-gallery">
-            <img class="img-fluid img-thumbnail" src="<%= restaurent.profile_img %>" alt="">
-              <div class="textBox">
-                  <h5><%= restaurent.name %></h5>
-              </div>
-          </a>
+            <h2>Read Food Articles</h2>
+            <h3>creative and awesome food articles </h3>
          </div>
-        </div>
-<% }) %>
-
-
-      </div>
+         <div class="row">
+            <!-- st -->
+            <% restaurants.forEach(function (restaurant) { %>
+             <div class="col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="300">
+                 <div class="row">
+                     <div class="col-lg-5 col-sm-12">
+                        <a href="/restaurants/<%= restaurant.url %>" class="d-block mb-5 h-100">
+                          <img class="img-fluid img-thumbnail" src="<%= restaurant.profile_img %>" alt="blog-1">
+                        </a>
+                     </div>
+                     <div class="col-lg-7 col-sm-12 inner-content">
+                         <h5><a href="/restaurants/<%= restaurant.url %>"><%= restaurant.name %></a></h5>
+                         <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of </h6>
+                     </div>
+                 </div>
+             </div>
+             <% }) %>
+             <!-- end -->
+         </div>
     </div>
-
-                
-
-
-    
-    <!-- /.container -->
 </section>
 
 <%- include('../partials/footer.ejs') %>

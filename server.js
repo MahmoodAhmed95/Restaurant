@@ -23,10 +23,11 @@ require("./config/passport");
 var usersRouter = require("./routes/users");
 var indexRouter = require("./routes/indexes");
 var aboutRouter = require("./routes/abouts");
-var blog_singleRouter = require("./routes/blog_singles");
-var blogRouter = require("./routes/blogs");
-var recipesRouter = require("./routes/recipes");
+// var blog_singleRouter = require("./routes/blog_singles");
+// var blogRouter = require("./routes/blogs");
+// var recipesRouter = require("./routes/recipes");
 var categoriesRouter = require("./routes/categories");
+var restaurantsRouter = require("./routes/restaurants");
 
 var app = express();
 
@@ -71,10 +72,11 @@ app.use(function (req, res, next) {
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/about", aboutRouter);
-app.use("/blog_single", blog_singleRouter);
-app.use("/blog", blogRouter);
-app.use("/recipes", recipesRouter);
+// app.use("/blog_single", blog_singleRouter);
+// app.use("/blog", blogRouter);
+// app.use("/recipes", recipesRouter);
 app.use("/categories", categoriesRouter);
+app.use("/restaurants", restaurantsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
