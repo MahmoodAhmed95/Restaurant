@@ -1,0 +1,33 @@
+<!-- views/addRestaurant.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Restaurant</title>
+</head>
+<body>
+
+  <h1>Add Restaurant</h1>
+
+  <form action="/addRestaurant" method="post">
+    <label for="name">Restaurant Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="categoryUrl">Category URL:</label>
+    <input type="text" id="categoryUrl" name="categoryUrl" required>
+
+    <label for="url">Restaurant URL:</label>
+    <input type="text" id="url" name="url" required>
+
+    <label for="profile_img">Profile Image URL:</label>
+    <input type="text" id="profile_img" name="profile_img" required>
+
+    <label for="cloudinary_id">Cloudinary ID:</label>
+    <input type="text" id="cloudinary_id" name="cloudinary_id" required>
+
+    <button type="submit">Add Restaurant</button>
+  </form>
+
+</body>
+</html>

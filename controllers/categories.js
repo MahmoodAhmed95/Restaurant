@@ -7,12 +7,6 @@ module.exports = {
   showCategoryRestaurents,
 };
 
-// function to show all in the home page
-// async function categories(req, res) {
-
-//   res.render("categories", {});
-// }
-
 async function index(req, res) {
   try {
     const categories = await Category.find({});

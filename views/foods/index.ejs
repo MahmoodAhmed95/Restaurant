@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') %>
+
+<section class="banner-home"></section>
+<section id="blog">
+   <div class="gradient"></div>
+           <div class="container">
+              <h1>Welcome to our food blog</h1>
+           </div>
+            <hr/>
+    <!-- Page Content -->
+    <div class="container">
+         <div class="heading" data-aos="fade-up" data-aos-delay="300">
+            <h2>Read Food Articles</h2>
+            <h3>creative and awesome food articles </h3>
+         </div>
+         <div class="row">
+            <!-- st -->
+            <% foods.forEach(function (food) { %>
+             <div class="col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="300">
+                 <div class="row">
+                     <div class="col-lg-5 col-sm-12">
+                        <a href="/foods/<%= food.url %>" class="d-block mb-5 h-100">
+                          <img class="img-fluid img-thumbnail" src="<%= food.profile_img %>" alt="blog-1">
+                        </a>
+                     </div>
+                     <div class="col-lg-7 col-sm-12 inner-content">
+                         <h5><a href="/foods/<%= food.url %>"><%= food.name %></a></h5>
+                         <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of </h6>
+                     </div>
+                 </div>
+             </div>
+             <% }) %>
+             <!-- end -->
+         </div>
+    </div>
+</section>
+
+<%- include('../partials/footer.ejs') %>

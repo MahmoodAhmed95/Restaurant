@@ -1,0 +1,39 @@
+<!-- views/addFood.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Food</title>
+</head>
+<body>
+
+  <h1>Add Food</h1>
+
+  <form action="/addFood" method="post">
+    <label for="name">Food Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="restaurantUrl">Restaurant URL:</label>
+    <input type="text" id="restaurantUrl" name="restaurantUrl" required>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="url">Food URL:</label>
+    <input type="text" id="url" name="url" required>
+
+    <label for="profile_img">Profile Image URL:</label>
+    <input type="text" id="profile_img" name="profile_img" required>
+
+    <label for="cloudinary_id">Cloudinary ID:</label>
+    <input type="text" id="cloudinary_id" name="cloudinary_id" required>
+
+    <button type="submit">Add Food</button>
+  </form>
+
+</body>
+</html>
