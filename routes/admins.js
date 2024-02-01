@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-// const upload = require("../utils/multer");
+const upload = require("../utils/multer");
 
 const adminsCtrl = require("../controllers/admins");
 
@@ -19,95 +19,60 @@ router.get("/", adminsCtrl.index);
 
 // Start "Categories" Routes
 
-// Get "Categories Control" Page
+// Get "Categories" Routes
 router.get("/categories", adminsCtrl.categoryIndex);
 
-// get majors by Ajax
-// router.get("/majors/ajaxMajor/:id", adminsCtrl.majorAjax);
-//Creating major Route
-// router.post("/majors", adminsCtrl.createMajor);
+// Post "Categories" Routes
+router.post(
+  "/categories",
+  upload.single("profile_img"),
+  adminsCtrl.createCategory
+);
 
-//Updating the major data -> database
-// router.put("/majors/update/:id", adminsCtrl.updateMajorForm);
-
-//deleting the major
-// router.delete("/majors/delete/:id", adminsCtrl.deleteMajor);
-
-// End of "Categories" Routes
+// End "Categories" Routes
 
 // =========================================================================================
 // =========================================================================================
 
-// Start "Courses" Routes
+// Start "Restaurants" Routes
 
-//New Course Route to display the form
+// Get "Restaurants" Routes
 router.get("/restaurants", adminsCtrl.restaurantsIndex);
 
-//Creating course Route
-// router.post("/courses", upload.single("image"), adminsCtrl.createCourse);
+// Post "Restaurants" Routes
+router.post(
+  "/restaurants",
+  upload.single("profile_img"),
+  adminsCtrl.createRestaurant
+);
 
-//get Suggestes by Ajax
-// router.get("/courses/ajaxSuggest/:id", adminsCtrl.courseSuggestAjax);
-
-//get Courses by Ajax
-// router.get("/courses/ajaxCourse/:id", adminsCtrl.courseAjax);
-
-//Updating  course data -> database
-// router.put(
-//   "/courses/update/:id",
-//   upload.single("image"),
-//   adminsCtrl.updateCourseForm
-// );
-
-//deleting the course
-// router.delete("/courses/delete/:id", adminsCtrl.deleteCourse);
-
-// End of "Courses" Routes
+// End "Restaurants" Routes
 
 // =========================================================================================
 // =========================================================================================
+// Start "Foods" Routes
 
+// Get "Foods" Routes
 router.get("/foods", adminsCtrl.foodsIndex);
 
-// =========================================================================================
-// =========================================================================================
+// Post "Foods" Routes
+router.post("/foods", upload.single("profile_img"), adminsCtrl.createFood);
 
-router.get("/users", adminsCtrl.usersIndex);
-
-// =========================================================================================
-// =========================================================================================
-// Start "Suggestions" Routes
-
-//New Course Route to display the form
-// router.get("/suggestions", adminsCtrl.suggestionsIndex);
-
-//New Course Route to display the form
-// router.get("/suggestions/:id", adminsCtrl.suggestionsDetails);
-
-//New Course Route to display the form
-// router.get("/suggestions/accept/:id", adminsCtrl.suggestionAccept);
-//New Course Route to display the form
-// router.get("/suggestions/reject/:id", adminsCtrl.suggestionReject);
-
-// End of "Suggestions" Routes
+// End "Foods" Routes
 
 // =========================================================================================
 // =========================================================================================
-
 // Start "Users" Routes
 
-// to display users table
-// router.get("/users", adminsCtrl.usersIndex);
+// Get "Users" Routes
+router.get("/users", adminsCtrl.usersIndex);
 
-// to display users table
-// router.get("/users/promote/:id", adminsCtrl.userPromote);
+// Post "Users" Routes
+router.post("/users", adminsCtrl.createUser);
 
-// to display users table
-// router.get("/users/demote/:id", adminsCtrl.userDemote);
+// End "Users" Routes
 
-// to display users table
-// router.get("/users/block/:id", adminsCtrl.userBlock);
-
-// End of "Users" Routes
+// =========================================================================================
+// =========================================================================================
 
 module.exports = router;

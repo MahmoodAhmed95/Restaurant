@@ -46,6 +46,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/public", express.static(path.join(__dirname, "public")));
+app.use("/assets", express.static(path.join(__dirname, "assets")));
 // use method override
 app.use(methodOverride("_method"));
 // session use to save the uninitialized

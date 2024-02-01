@@ -5,7 +5,7 @@ const foodSchema = new Schema(
     name: String,
     restaurantUrl: String,
     price: Number,
-    descreption: String,
+    description: String,
     url: String,
     profile_img: String,
     cloudinary_id: String,
