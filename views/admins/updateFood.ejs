@@ -1,0 +1,52 @@
+<%- include('../partials/admin/header.ejs') %>  
+<div class="container-fluid">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Add Food</h5>
+              <div class="card">
+                <div class="card-body">
+                  <form action="/admins/foods" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Food Name</label>
+                      <input class="form-control" type="text" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="price" class="form-label">Food Price</label>
+                      <input class="form-control" type="number" id="price" name="price" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="description" class="form-label">Food Description</label>
+                      <input class="form-control" type="text" id="description" name="description" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="selectedRestaurantUrl" class="form-label">Restaurant</label>
+                        <select class="form-select" name="selectedRestaurantUrl" id="selectedRestaurantUrl" onchange="takeValue()" required>
+                          <option value="">Select a restaurant</option>
+                          <% restaurants.forEach(function (restaurant) { %>
+                              <option value="<%= restaurant.url %>">
+                                  <%= restaurant.name %>
+                              </option>
+                          <% }); %>
+                        </select>
+                        <input type="hidden" id="restaurantUrl" name="restaurantUrl" value="">
+                      </div>
+                      <div class="mb-3">
+                        <label for="profile_img" class="form-label">Food Image</label>
+                        <input class="form-control" type="file" id="profile_img" name="profile_img" required>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<script>
+function takeValue() {
+  let selected = document.getElementById("selectedRestaurantUrl").value
+  document.getElementById("restaurantUrl").value = selected
+}
+</script>
+<%- include('../partials/admin/footer.ejs') %>

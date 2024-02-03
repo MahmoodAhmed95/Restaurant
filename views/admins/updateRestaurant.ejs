@@ -1,0 +1,45 @@
+<%- include('../partials/admin/header.ejs') %>  
+<div class="container-fluid">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Add Restaurant</h5>
+              <div class="card">
+                <div class="card-body">
+                  <form action="/admins/addRestaurant" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Restaurant Name</label>
+                      <input class="form-control" type="text" id="name" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="selectedCategoryUrl" class="form-label">Category</label>
+                        <select class="form-select" name="selectedCategoryUrl" id="selectedCategoryUrl" onchange="takeValue()" required>
+                          <option value="">Select a category</option>
+                          <% categories.forEach(function (category) { %>
+                            <option value="<%= category.url %>">
+                            <%= category.name %>
+                            </option>
+                          <% }); %>
+                        </select>
+                        <input type="hidden" id="categoryUrl" name="categoryUrl" value="">
+                      </div>
+                      <div class="mb-3">
+                        <label for="profile_img" class="form-label">Restaurant Image</label>
+                        <input class="form-control" type="file" id="profile_img" name="profile_img" required>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<script>
+function takeValue() {
+  let selected = document.getElementById("selectedCategoryUrl").value
+  document.getElementById("categoryUrl").value = selected
+}
+</script>
+<%- include('../partials/admin/footer.ejs') %>
+

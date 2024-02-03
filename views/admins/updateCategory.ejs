@@ -1,0 +1,51 @@
+<%- include('../partials/admin/header.ejs') %>
+
+      <div class="container-fluid">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold mb-4">Update Category Form</h5>
+              <div class="card">
+                <div class="card-body">
+                  <form action="/admins/categories" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="selectedCategoryUrl" class="form-label">Category</label>
+                        <select class="form-select" name="selectedCategoryUrl" id="selectedCategoryUrl" onchange="takeValue()" required>
+                          <option value="">Select a category</option>
+                          <% category.forEach(function (category) { %>
+                            <option value="<%= category.url %>">
+                            <%= category.name %>
+                            </option>
+                            
+                          <% }); %>
+                        </select>
+                        <input type="hidden" id="name" name="name" value="">
+                      </div>
+                      <div class="mb-3">
+                        <label for="currentCategoryImage" class="form-label">Current Category Image</label>
+                        <img id="oldImage" src="<%= categories["Drinks"].profile_img %>" alt="oldImage" class="img-fluid">
+                        <!-- The above assumes that 'currentCategory' is passed to the template -->
+                      </div>
+                      <div class="mb-3">
+                        <label for="profile_img" class="form-label">Category Image</label>
+                        <input type="file" id="profile_img" name="profile_img" class="form-control" required>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </form>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+<script>
+function takeValue() {
+  let selected = document.getElementById("selectedCategoryUrl").value
+  document.getElementById("name").value = selected
+//   document.getElementById("oldImage").alt = categories[selected]
+//   console.log(categories["Drinks"]);
+//   document.getElementById("oldImage").alt = categories[selected].profile_img
+}
+</script>
+<%- include('../partials/admin/footer.ejs') %>

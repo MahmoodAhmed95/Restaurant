@@ -19,15 +19,31 @@ router.get("/", adminsCtrl.index);
 
 // Start "Categories" Routes
 
-// Get "Categories" Routes
-router.get("/categories", adminsCtrl.categoryIndex);
+// Get "addCategory" Routes
+router.get("/addCategory", adminsCtrl.addCategoryForm);
 
-// Post "Categories" Routes
+// Post "addCategory" Routes
 router.post(
   "/categories",
   upload.single("profile_img"),
-  adminsCtrl.createCategory
+  adminsCtrl.addCategory
 );
+
+// Get "updateCategory" Routes
+router.get("/updateCategory", adminsCtrl.updateCategoryForm);
+
+// Post "updateCategory" Routes
+router.post(
+  "/categories",
+  upload.single("profile_img"),
+  adminsCtrl.updateCategory
+);
+
+// Get "deleteCategory" Routes
+router.get("/deleteCategory", adminsCtrl.deleteCategoryForm);
+
+// Post "deleteCategory" Routes
+router.delete("/deleteCategory/:name", adminsCtrl.deleteCategory);
 
 // End "Categories" Routes
 
@@ -36,15 +52,31 @@ router.post(
 
 // Start "Restaurants" Routes
 
-// Get "Restaurants" Routes
-router.get("/restaurants", adminsCtrl.restaurantsIndex);
+// Get "addRestaurant" Routes
+router.get("/addRestaurant", adminsCtrl.addRestaurantForm);
 
-// Post "Restaurants" Routes
+// Post "addRestaurant" Routes
+router.post(
+  "/addRestaurant",
+  upload.single("profile_img"),
+  adminsCtrl.addRestaurant
+);
+
+// Get "updateRestaurant" Routes
+router.get("/updateRestaurant", adminsCtrl.updateRestaurantForm);
+
+// Post "updateRestaurant" Routes
 router.post(
   "/restaurants",
   upload.single("profile_img"),
-  adminsCtrl.createRestaurant
+  adminsCtrl.updateRestaurant
 );
+
+// Get "deleteRestaurant" Routes
+router.get("/deleteRestaurant", adminsCtrl.deleteRestaurantForm);
+
+// Post "deleteRestaurant" Routes
+router.delete("/deleteRestaurant/:name", adminsCtrl.deleteRestaurant);
 
 // End "Restaurants" Routes
 
@@ -52,11 +84,23 @@ router.post(
 // =========================================================================================
 // Start "Foods" Routes
 
-// Get "Foods" Routes
-router.get("/foods", adminsCtrl.foodsIndex);
+// Get "addFood" Routes
+router.get("/addFood", adminsCtrl.addFoodForm);
 
-// Post "Foods" Routes
-router.post("/foods", upload.single("profile_img"), adminsCtrl.createFood);
+// Post "addFood" Routes
+router.post("/foods", upload.single("profile_img"), adminsCtrl.addFood);
+
+// Get "updateFood" Routes
+router.get("/updateFood", adminsCtrl.updateFoodForm);
+
+// Post "updateFood" Routes
+router.post("/foods", upload.single("profile_img"), adminsCtrl.updateFood);
+
+// Get "deleteFood" Routes
+router.get("/deleteFood", adminsCtrl.deleteFoodForm);
+
+// Post "deleteFood" Routes
+router.delete("/deleteFood/:name", adminsCtrl.deleteFood);
 
 // End "Foods" Routes
 

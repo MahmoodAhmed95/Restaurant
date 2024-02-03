@@ -1,0 +1,78 @@
+<%- include('../partials/admin/header.ejs') %>
+
+<div class="container-fluid">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title fw-semibold mb-4">Delete Restaurant</h5>
+        <div class="card">
+          <div class="card-body">
+            <form id="form" action="" method="post" enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="selectedRestaurantUrl" class="form-label">Restaurant</label>
+                <select class="form-select" name="selectedRestaurantUrl" id="selectedRestaurantUrl" onchange="updateFoods()" required>
+                  <option value="">Select a restaurant</option>
+                  <% restaurant.forEach(function (restaurant) { %>
+                    <option value="<%= restaurant.url %>">
+                      <%= restaurant.name %>
+                    </option>
+                  <% }); %>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="selectedFoodUrl" class="form-label">Food</label>
+                <select class="form-select" name="selectedFoodUrl" id="selectedFoodUrl" onchange="takeValue()" required>
+                  <!-- Populate the restaurant dropdown based on the selected category -->
+                  <option value="">Select a food</option>
+                  <% food.forEach(function (food) { %>
+                    <option value="<%= food.url %>">
+                      <%= food.name %>
+                    </option>
+                  <% }); %>
+                </select>
+                <input type="hidden" id="name" name="name" value="">
+              </div>
+              <button type="submit" class="btn btn-primary">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function updateFoods() {
+  let selectedRestaurant = document.getElementById("selectedRestaurantUrl").value;
+  let foodDropdown = document.getElementById("selectedFoodUrl");
+  let nameInput = document.getElementById("name");
+
+  // Reset the restaurant dropdown
+  foodDropdown.innerHTML = '<option value="">Select a food</option>';
+
+  // Filter restaurants based on the selected category
+  <% food.forEach(function (food) { %>
+    if ("<%= food.restaurantUrl %>" === selectedRestaurant) {
+      let option = document.createElement("option");
+      option.value = "<%= food.url %>";
+      option.textContent = "<%= food.name %>";
+      foodDropdown.appendChild(option);
+    }
+  <% }); %>
+
+  // Update the form action
+  nameInput.value = selectedRestaurant;
+  console.log(selectedRestaurant);
+  
+//   document.getElementById("form").action = `/admins/deleteRestaurant/${selectedCategory}?_method=DELETE`;
+}
+function takeValue() {
+  let selected = document.getElementById("selectedFoodUrl").value;
+  document.getElementById("name").value = selected;
+  console.log(selected);
+  document.getElementById("form").action = `/admins/deleteFood/${selected}?_method=DELETE`;
+
+}
+</script>
+
+<%- include('../partials/admin/footer.ejs') %>
